@@ -17,4 +17,4 @@ quantities, remove items, and calculate the total cart cost.
 - View individual item totals
 - View the overall cart total
 - Continue shopping
-- Responsive user interface
+

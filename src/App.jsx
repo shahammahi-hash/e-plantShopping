@@ -1,18 +1,29 @@
+import { useState } from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import Navbar from "./components/Navbar";
 import ProductList from "./components/ProductList";
 import CartItem from "./components/CartItem";
 import AboutUs from "./components/AboutUs";
 import "./App.css";
 
 function Home() {
+  const [showProducts, setShowProducts] = useState(false);
+
+  if (showProducts) {
+    return <ProductList />;
+  }
+
   return (
-    <div className="home">
-      <h1>Paradise Nursery</h1>
+    <div className="home background-image">
+      <h1>Welcome to Paradise Nursery</h1>
+
       <p>Bring nature into your home.</p>
-      <Link className="get-started" to="/plants">
-      Get Started
-      </Link>
+
+      <button
+        className="get-started"
+        onClick={() => setShowProducts(true)}
+      >
+        Get Started
+      </button>
     </div>
   );
 }
@@ -20,7 +31,6 @@ function Home() {
 function App() {
   return (
     <BrowserRouter>
-      <Navbar />
 
       <Routes>
         <Route path="/" element={<Home />} />

@@ -1,18 +1,23 @@
 function AboutUs() {
   return (
-    <section className="about-us">
-      <h2>About Paradise Nursery</h2>
+    <div className="about-us-container">
+      <h2>About e-plantShopping</h2>
 
       <p>
-        Paradise Nursery is an online plant shop offering a variety of
-        beautiful and healthy plants for your home and garden.
+        e-plantShopping is an online plant store that makes it easy to
+        discover and purchase a variety of beautiful plants for your home.
       </p>
 
       <p>
-        Our goal is to make it easy for everyone to bring nature into
-        their living spaces.
+        Our mission is to make plant shopping simple, convenient, and
+        enjoyable for everyone.
       </p>
-    </section>
+
+      <p>
+        We provide a wide selection of indoor plants, succulents, and
+        flowering plants with an easy-to-use shopping cart experience.
+      </p>
+    </div>
   );
 }
 

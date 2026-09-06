@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { removeItem, updateQuantity } from "../redux/CartSlice";
+import Navbar from "./Navbar";
 
 function CartItem() {
   const dispatch = useDispatch();
@@ -22,7 +23,6 @@ function CartItem() {
   };
 
   const handleDecrease = (item) => {
-    // Prevent quantity from becoming less than 1.
     if (item.quantity > 1) {
       dispatch(
         updateQuantity({
@@ -30,6 +30,8 @@ function CartItem() {
           quantity: item.quantity - 1
         })
       );
+    } else {
+      dispatch(removeItem(item.id));
     }
   };
 
@@ -38,65 +40,67 @@ function CartItem() {
   };
 
   return (
-    <div className="cart-page">
-      <h1>Shopping Cart</h1>
+    <>
+      <Navbar />
 
-      {cartItems.length === 0 ? (
-        <p>Your cart is empty.</p>
-      ) : (
-        <>
-          {cartItems.map((item) => (
-            <div className="cart-item" key={item.id}>
+      <div className="cart-page">
+        <h1>Shopping Cart</h1>
 
-              {/* image */}
-              <img
-                src={item.image}
-                alt={item.name}
-              />
+        {cartItems.length === 0 ? (
+          <p>Your cart is empty.</p>
+        ) : (
+          <>
+            {cartItems.map((item) => (
+              <div className="cart-item" key={item.id}>
+                <img
+                  src={item.image}
+                  alt={item.name}
+                />
 
-              {/* name and unit price */}
-              <div>
-                <h2>{item.name}</h2>
-                <p>Unit Price: ₹{item.price}</p>
-              </div>
+                <div>
+                  <h2>{item.name}</h2>
+                  <p>Unit Price: ₹{item.price}</p>
+                </div>
 
-              {/* quantity */}
-              <div className="quantity-controls">
-                <button onClick={() => handleDecrease(item)}>
-                  -
+                <div className="quantity-controls">
+                  <button onClick={() => handleDecrease(item)}>
+                    -
+                  </button>
+
+                  <span>{item.quantity}</span>
+
+                  <button onClick={() => handleIncrease(item)}>
+                    +
+                  </button>
+                </div>
+
+                <p>
+                  Total: ₹{item.price * item.quantity}
+                </p>
+
+                <button onClick={() => handleDelete(item.id)}>
+                  Delete
                 </button>
-
-                <span>{item.quantity}</span>
-
-                <button onClick={() => handleIncrease(item)}>
-                  +
-                </button>
               </div>
+            ))}
 
-              {/* item total */}
-              <p>
-                Total: ₹{item.price * item.quantity}
-              </p>
+            <h2>Total: ₹{total}</h2>
 
-              {/* delete */}
-              <button onClick={() => handleDelete(item.id)}>
-                Delete
-              </button>
-            </div>
-          ))}
+            <button
+              onClick={() =>
+                alert("Checkout feature is coming soon!")
+              }
+            >
+              Checkout
+            </button>
 
-          <h2>Total: ₹{total}</h2>
-
-          <button onClick={() => alert("Coming Soon")}>
-            Checkout
-          </button>
-
-          <Link to="/plants">
-            <button>Continue Shopping</button>
-          </Link>
-        </>
-      )}
-    </div>
+            <Link to="/plants">
+              <button>Continue Shopping</button>
+            </Link>
+          </>
+        )}
+      </div>
+    </>
   );
 }
 

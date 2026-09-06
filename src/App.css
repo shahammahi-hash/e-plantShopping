@@ -70,6 +70,13 @@ body {
   position: relative;
 }
 
+.background-image {
+  background-image: url("/images/nursery-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 /* Dark layer over background */
 .home::before {
   content: "";
@@ -80,7 +87,7 @@ body {
 
 .home h1,
 .home p,
-.home a {
+.home button {
   position: relative;
   z-index: 1;
 }
@@ -107,6 +114,8 @@ body {
   font-weight: bold;
   font-size: 18px;
   transition: background 0.2s, transform 0.2s;
+  border: none;
+  cursor: pointer;
 }
 
 .home .get-started:hover {
