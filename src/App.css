@@ -1,0 +1,374 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f7f2;
+  color: #263238;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+  width: 100%;
+  background: #1b5e20;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 40px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar h2 {
+  font-size: 25px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: opacity 0.2s;
+}
+
+.nav-links a:hover {
+  opacity: 0.8;
+}
+
+/* =========================
+   HOME PAGE
+========================= */
+
+.home {
+  min-height: calc(100vh - 70px);
+  background-image: url("/images/nursery-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+  padding: 40px;
+
+  position: relative;
+}
+
+/* Dark layer over background */
+.home::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.home h1,
+.home p,
+.home a {
+  position: relative;
+  z-index: 1;
+}
+
+.home h1 {
+  color: white;
+  font-size: 55px;
+  margin-bottom: 15px;
+}
+
+.home p {
+  color: white;
+  font-size: 22px;
+  margin-bottom: 30px;
+}
+
+.home .get-started {
+  display: inline-block;
+  padding: 14px 28px;
+  text-decoration: none;
+  background: #2e7d32;
+  color: white;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 18px;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.home .get-started:hover {
+  background: #1b5e20;
+  transform: translateY(-2px);
+}
+
+/* =========================
+   PRODUCT PAGE
+========================= */
+
+.product-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 45px 25px;
+}
+
+.product-page > h1 {
+  text-align: center;
+  font-size: 42px;
+  margin-bottom: 45px;
+  color: #1b5e20;
+}
+
+.category-section {
+  margin-bottom: 55px;
+}
+
+.category-section h2 {
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 25px;
+  color: #2e7d32;
+}
+
+/* 3-column product layout */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.product-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+.product-card img {
+  width: 100%;
+  height: 230px;
+  object-fit: contain;
+  margin-bottom: 15px;
+  border-radius: 8px;
+}
+
+.product-card h3 {
+  font-size: 21px;
+  margin-bottom: 10px;
+}
+
+.product-card p {
+  font-size: 18px;
+  font-weight: bold;
+  color: #2e7d32;
+  margin-bottom: 15px;
+}
+
+.product-card button {
+  border: none;
+  background: #2e7d32;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.product-card button:hover:not(:disabled) {
+  background: #1b5e20;
+}
+
+.product-card button:disabled {
+  background: #777;
+  cursor: not-allowed;
+}
+
+/* =========================
+   CART PAGE
+========================= */
+
+.cart-page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 45px 25px;
+}
+
+.cart-page > h1 {
+  text-align: center;
+  color: #1b5e20;
+  font-size: 42px;
+  margin-bottom: 35px;
+}
+
+.cart-item {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+
+  display: grid;
+  grid-template-columns: 120px 1fr auto auto auto;
+  gap: 20px;
+  align-items: center;
+
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.cart-item img {
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.cart-item h2 {
+  color: #263238;
+  font-size: 21px;
+  margin-bottom: 8px;
+}
+
+.cart-item p {
+  font-size: 16px;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.quantity-controls button {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 5px;
+  background: #2e7d32;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.quantity-controls span {
+  min-width: 25px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.cart-item > button {
+  border: none;
+  background: #c62828;
+  color: white;
+  padding: 9px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.cart-item > button:hover {
+  background: #8e0000;
+}
+
+.cart-page > h2 {
+  text-align: right;
+  margin: 25px 0;
+  color: #1b5e20;
+}
+
+.cart-page > button,
+.cart-page > a button {
+  border: none;
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.cart-page > button {
+  background: #2e7d32;
+  color: white;
+}
+
+.cart-page > a button {
+  background: #607d8b;
+  color: white;
+}
+
+.cart-page > button:hover {
+  background: #1b5e20;
+}
+
+.cart-page > a button:hover {
+  background: #455a64;
+}
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+
+@media (max-width: 900px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cart-item {
+    grid-template-columns: 100px 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+    gap: 12px;
+    padding: 15px;
+  }
+
+  .nav-links {
+    gap: 15px;
+  }
+
+  .home h1 {
+    font-size: 38px;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .product-page > h1,
+  .cart-page > h1 {
+    font-size: 34px;
+  }
+
+  .cart-item {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .cart-item img {
+    margin: auto;
+  }
+
+  .quantity-controls {
+    justify-content: center;
+  }
+}
