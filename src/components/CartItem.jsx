@@ -8,6 +8,11 @@ function CartItem() {
 
   const cartItems = useSelector((state) => state.cart.items);
 
+  const totalCartQuantity = cartItems.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
+
   const total = cartItems.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0
@@ -41,7 +46,7 @@ function CartItem() {
 
   return (
     <>
-      <Navbar />
+      <Navbar cartCount={totalCartQuantity} />
 
       <div className="cart-page">
         <h1>Shopping Cart</h1>

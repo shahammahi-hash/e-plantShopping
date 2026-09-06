@@ -1,14 +1,6 @@
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
 
-function Navbar() {
-  const cartItems = useSelector((state) => state.cart.items);
-
-  const cartCount = cartItems.reduce(
-    (total, item) => total + item.quantity,
-    0
-  );
-
+function Navbar({ cartCount }) {
   return (
     <nav className="navbar">
       <h2>Paradise Nursery</h2>

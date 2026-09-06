@@ -8,6 +8,11 @@ function ProductList() {
 
   const cartItems = useSelector((state) => state.cart.items);
 
+  const totalCartQuantity = cartItems.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
+
   const categories = [
     ...new Set(plants.map((plant) => plant.category))
   ];
@@ -18,7 +23,7 @@ function ProductList() {
 
   return (
     <>
-      <Navbar />
+      <Navbar cartCount={totalCartQuantity} />
 
       <div className="product-page">
         <h1>Our Plants</h1>
